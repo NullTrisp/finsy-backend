@@ -1,0 +1,43 @@
+{
+  "name": "finsy",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "deploy": "npm run lint && npm run build && (npm run  deploy:app)",
+    "deploy:app": "cross-env bash ./bin/deploy.sh",
+    "dev": "npm run build & cross-env NODE_ENV=development nodemon ./src/index.ts",
+    "start": "node ./lib/index.js",
+    "lint": "npx eslint src/**/*.ts test/**/*.test.ts --fix",
+    "test": "npx eslint src/**/*.ts test/**/*.test.ts && npx ts-mocha test/**/*.test.ts",
+    "test:watch": "cross-env NODE_ENV=development npx mocha --watch --notify --notifyMode=change --coverage"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google-cloud/firestore": "^7.10.0",
+    "express": "^4.21.0",
+    "tsc": "^2.0.4",
+    "typescript": "^5.6.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.19",
+    "@types/express": "^4.17.21",
+    "@types/mocha": "^10.0.8",
+    "@types/node": "^22.5.5",
+    "@typescript-eslint/eslint-plugin": "^8.6.0",
+    "@typescript-eslint/parser": "^8.6.0",
+    "chai": "^5.1.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^10.7.3",
+    "nodemon": "^3.1.7",
+    "prettier": "^3.3.3",
+    "ts-mocha": "^10.0.0",
+    "ts-node": "^10.9.2"
+  }
+}
